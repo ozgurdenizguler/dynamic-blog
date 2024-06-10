@@ -1,0 +1,447 @@
+* {
+  margin: 0; /* Tüm elemanların varsayılan dış marjını sıfırlar */
+  padding: 0; /* Tüm elemanların varsayılan iç dolgusunu sıfırlar */
+  box-sizing: border-box; /* Elemanların genişliği ve yüksekliği iç dolgu ve kenar genişliği ile birlikte hesaplanır */
+}
+
+body {
+  font-family: Arial, sans-serif; /* Sayfanın genel yazı tipi ailesini Arial olarak belirler */
+  line-height: 1.6; /* Satır yüksekliğini yazı tipi boyutunun 1.6 katı yapar */
+}
+
+html {
+  scroll-behavior: smooth; /* Sayfada yumuşak kaydırma davranışını etkinleştirir */
+}
+
+header {
+  background: #c83062; /* Üstbilgi arka plan rengini belirler */
+  color: #fff; /* Üstbilgi içindeki metin rengini beyaz yapar */
+  padding: 1rem 0; /* Üstbilginin üst ve altına 1 rem boşluk ekler */
+  position: fixed; /* Üstbilgiyi sabitler, sayfada kaydırma yapıldığında yerinde kalır */
+  width: 100%; /* Üstbilginin genişliğini yüzde 100 yapar */
+  top: 0; /* Üstbilginin sayfanın üst kısmına hizalanmasını sağlar */
+  left: 0; /* Üstbilginin sayfanın sol kısmına hizalanmasını sağlar */
+  z-index: 1000; /* Üstbilginin diğer içeriklerin üstünde görünmesini sağlar */
+}
+
+nav ul {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+nav ul li {
+  display: inline;
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  padding-bottom: 5px; /* Bağlantının altına 5 piksel iç boşluk ekler */
+  transition: color 0.3s ease; /* Renk değişimini 0.3 saniyede yumuşak bir şekilde yapar */
+}
+
+nav ul li a::after {
+  content: ""; /* Pseudo-eleman oluşturur */
+  display: block; /* Blok seviyesinde görüntüler */
+  width: 0; /* Başlangıç genişliğini 0 yapar */
+  height: 2px; /* Yüksekliği 2 piksel yapar */
+  background: #584ec9; /* Arka plan rengini belirler */
+  transition: width 0.3s; /* Genişlik değişimini 0.3 saniyede yapar */
+  position: absolute; /* Mutlak konumlandırma yapar */
+  bottom: 0; /* Bağlantının altına hizalar */
+  left: 50%; /* Yatayda ortalar */
+  transform: translateX(-50%); /* Pseudo-elemanı tam ortada hizalar */
+}
+
+nav ul li a:hover {
+  color: #584ec9; /* Fare ile üzerine gelindiğinde bağlantı rengini değiştirir */
+}
+
+nav ul li a:hover::after {
+  width: 100%; /* Fare ile üzerine gelindiğinde alt çizginin genişliğini tam yapar */
+}
+
+.hero-section {
+  background: url("assets/anasayfa.jpg") no-repeat center center/cover; /* Arka plan resmi ekler ve kaplar */
+  color: #fff; /* İçindeki metin rengini beyaz yapar */
+  height: 100vh; /* Yüksekliği görünüm yüksekliğinin yüzde 100'ü yapar */
+  display: flex; /* Flexbox düzenini uygular */
+  align-items: center; /* Dikeyde ortalar */
+  justify-content: center; /* Yatayda ortalar */
+  text-align: center; /* Metni ortalar */
+  margin: 0; /* Boşlukları kaldırır */
+  padding: 0 ; /* Boşlukları kaldırır */
+}
+
+.hero-section h1 {
+  font-size: 3rem; /* Başlık boyutunu 3 rem yapar */
+  margin-bottom: 1rem; /* Başlık altına 1 rem boşluk ekler */
+}
+
+.content-section {
+  padding: 2rem 2rem; /* Üst ve alta 2 rem boşluk ekler */
+  text-align: center; /* Metni ortalar */
+  scroll-margin-top: 60px; /* Bölümler arasında kaydırma yapıldığında üstte 60 piksel boşluk bırakır */
+}
+
+.content-section h2 {
+  color: #c83062; /* Başlık rengini belirler */
+  font-size: 2.5rem; /* Başlık boyutunu 2.5 rem yapar */
+}
+
+.projects-grid {
+  display: grid; /* Grid düzeni uygular */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Otomatik olarak sığacak şekilde kolonlar oluşturur */
+  gap: 2rem; /* Grid öğeleri arasında 2 rem boşluk bırakır */
+  padding: 2rem; /* Çevresine 2 rem boşluk ekler */
+  justify-items: center;
+}
+
+.projects-grid > *:only-child {
+  justify-self: center; /* Center the single child */
+  max-width: 50%; /* Optional: Set a max width */
+  height: auto;
+}
+
+.project {
+  background: #f4f4f4;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* İçeriği üst ve alt kısımlara yayar */
+  height: 100%; /* Kartın tam yüksekliğini alır */
+  box-sizing: border-box; /* Padding'i toplam yüksekliğe dahil eder */
+}
+
+.project:hover {
+  transform: scale(
+    1.05
+  ); /* Fare ile üzerine gelindiğinde boyutunu yüzde 105 yapar */
+}
+
+.project img {
+  width: 100%; /* Resmin genişliğini tam yapar */
+  border-radius: 8px; /* Köşelerini 8 piksel yuvarlar */
+}
+
+.blog-grid {
+  display: grid; /* Grid düzeni uygular */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(250px, 1fr)
+  ); /* Otomatik olarak sığacak şekilde kolonlar oluşturur */
+  gap: 2rem; /* Grid öğeleri arasında 2 rem boşluk bırakır */
+  padding: 2rem; /* Çevresine 2 rem boşluk ekler */
+  justify-items: center;
+}
+.blog-grid > *:only-child {
+  justify-self: center; /* Center the single child */
+  max-width: 50%; /* Optional: Set a max width */
+  height: auto;
+}
+
+#blog h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#blog h2 span#add-blog-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.blog-card {
+  background: #fff; /* Blog kartlarının arka plan rengini beyaz yapar */
+  padding: 1rem; /* Blog kartlarının içini 1 rem doldurur */
+  border-radius: 8px; /* Köşelerini 8 piksel yuvarlar */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Hafif bir gölge ekler */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Dönüşüm ve gölge efektini 0.3 saniyede yapar */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* İçeriği üst ve alt kısımlara yayar */
+  height: 100%; /* Kartın tam yüksekliğini alır */
+  box-sizing: border-box; /* Padding'i toplam yüksekliğe dahil eder */
+}
+
+.blog-card:hover {
+  transform: translateY(
+    -10px
+  ); /* Fare ile üzerine gelindiğinde kartı 10 piksel yukarı kaydırır */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Fare ile üzerine gelindiğinde gölgeyi artırır */
+}
+
+.blog-card img {
+  width: 100%; /* Resmin genişliğini tam yapar */
+  border-radius: 8px; /* Köşelerini 8 piksel yuvarlar */
+}
+
+.about-container {
+  display: flex; /* Flexbox düzeni uygular */
+  justify-content: space-between; /* İçeriği yatayda boşluk bırakacak şekilde hizalar */
+  align-items: center; /* İçeriği dikeyde ortalar */
+  padding: 2rem; /* Çevresine 2 rem boşluk ekler */
+}
+
+.about-info {
+  flex: 1; /* Esnek birimle genişler */
+  text-align: left; /* Metni sola hizalar */
+}
+
+.profile-image {
+  flex: 1; /* Esnek birimle genişler */
+  text-align: right; /* Görseli sağa hizalar */
+}
+
+.profile-image img {
+  border-radius: 50%; /* Resmi daire şekline getirir */
+  max-width: 200px; /* Maksimum genişliğini 200 piksel yapar */
+}
+
+footer {
+  background: #c83062; /* Altbilgi arka plan rengini belirler */
+  color: #fff; /* Altbilgi içindeki metin rengini beyaz yapar */
+  text-align: center; /* Metni ortalar */
+  padding: 1rem 0; /* Üst ve alta 1 rem boşluk ekler */
+}
+
+#contact {
+  background: linear-gradient(to right, #d7bce2, #a9c9ff); /* Sol üstten sağ alta doğru gradient ekler */
+  padding: 2rem; /* Çevresine 2 rem boşluk ekler */
+  text-align: center; /* Metni ortalar */
+}
+
+
+#contact-form {
+  background: #d7bce2;
+  padding: 2rem;
+  text-align: center;
+}
+
+.contact-form-container {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+#contactForm {
+  display: flex;
+  flex-direction: column;
+}
+
+#contactForm label {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+#contactForm input,
+#contactForm textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#contactForm button {
+  padding: 0.5rem;
+  background-color: #c83062;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#contactForm button:hover {
+  background-color: #a82852;
+}
+
+/* Login Section Styles */
+.login-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: url("assets/login.jpg") no-repeat center center/cover;
+}
+
+.login-container {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.login-container h2 {
+  margin-bottom: 1rem;
+  color: #c83062;
+}
+
+.login-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-container label {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.login-container input {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-container button {
+  padding: 0.5rem;
+  background-color: #c83062;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-container button:hover {
+  background-color: #a82852;
+}
+
+.hidden {
+  display: none;
+}
+.menu-toggle {
+  display: none; /* Varsayılan olarak gizli */
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #fff;
+  padding: 1rem;
+}
+
+.nav-list {
+  display: flex; /* Masaüstü için varsayılan stil */
+  list-style: none;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  transition: max-height 0.3s ease-in-out;
+}
+
+#projects h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#projects h2 span#add-project-icon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.dialog-open {
+  overflow: hidden; /* Scroll'u gizler */
+}
+
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  width: 80%;
+  max-width: 500px;
+}
+.dialog h2 {
+  color: #c83062;
+}
+
+.dialog-container {
+  text-align: center;
+}
+
+.dialog-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.dialog-container label {
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.dialog-container input,
+.dialog-container textarea {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.dialog-container button {
+  padding: 0.5rem;
+  background-color: #c83062;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.dialog-container button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.edit-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 10px;
+}
+@media (max-width: 768px) {
+  .nav-list {
+    display: none; /* Mobilde varsayılan olarak gizli */
+    flex-direction: column;
+    background-color: #c83062;
+    width: 100%;
+  }
+
+  .nav-list.active {
+    display: flex; /* Menü simgesine tıklanınca göster */
+  }
+
+  .menu-toggle {
+    display: block; /* Mobilde hamburger simgesini göster */
+  }
+
+  nav ul li {
+    margin: 1rem 0; /* Mobilde menü öğeleri arasına boşluk ekle */
+  }
+}
